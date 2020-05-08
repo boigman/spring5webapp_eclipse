@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
 /*
  * Created by Dave Stauffer - 5/7/2020
@@ -14,7 +14,7 @@ import org.springframework.data.annotation.Id;
 public class Author {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	
@@ -33,11 +33,11 @@ public class Author {
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -66,14 +66,14 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
+		return "Author [Id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -86,10 +86,10 @@ public class Author {
 		if (getClass() != obj.getClass())
 			return false;
 		Author other = (Author) obj;
-		if (Id == null) {
-			if (other.Id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!Id.equals(other.Id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

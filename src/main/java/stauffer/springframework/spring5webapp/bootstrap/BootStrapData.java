@@ -1,12 +1,12 @@
 package stauffer.springframework.spring5webapp.bootstrap;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
 import stauffer.springframework.spring5webapp.domain.Author;
 import stauffer.springframework.spring5webapp.domain.Book;
 import stauffer.springframework.spring5webapp.repositories.AuthorRepository;
 import stauffer.springframework.spring5webapp.repositories.BookRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
 
 /**
  * Created by jt on 12/23/19.
