@@ -3,9 +3,18 @@ package stauffer.springframework.spring5webapp.domain;
  * Created by Dave Stauffer - 5/7/2020
 */
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by jt on 12/22/19.
@@ -19,6 +28,10 @@ public class Book {
 
     private String title;
     private String isbn;
+    
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="publisher_id")
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
@@ -33,7 +46,15 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Long getId() {
+    public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public Long getId() {
         return id;
     }
 
