@@ -29,7 +29,9 @@ public class Book {
     private String title;
     private String isbn;
     
-    @ManyToOne(cascade=CascadeType.ALL)
+//    @ManyToOne(cascade=CascadeType.ALL)
+//    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name="publisher_id")
     private Publisher publisher;
 

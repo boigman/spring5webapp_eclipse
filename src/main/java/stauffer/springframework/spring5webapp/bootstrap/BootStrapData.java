@@ -31,31 +31,36 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Author eric = new Author("Eric", "Evans");
+        authorRepository.save(eric);
         Book ddd = new Book("Domain Driven Design", "123123");
-        Publisher rh = new Publisher("Random House","123 Sesame St","New York","NY","12345");
+        bookRepository.save(ddd);
+        Publisher rh = new Publisher("Random House","1745 Broadway","New York","NY","10019");
+        publisherRepository.save(rh);
+
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
         ddd.setPublisher(rh);
         rh.getBooks().add(ddd);
+//        publisherRepository.save(rh);
 
-        authorRepository.save(eric);
-        bookRepository.save(ddd);
-        publisherRepository.save(rh);
 
         Author rod = new Author("Rod", "Johnson");
+        authorRepository.save(rod);
         Book noEJB = new Book("J2EE Development without EJB", "3939459459");
-        Publisher hm = new Publisher("Houghton Mifflin","455 Madison Ave.","New York","NY","12345");
+        bookRepository.save(noEJB);
+        Publisher hm = new Publisher("Houghton Mifflin Harcourt","125 High Street","Boston","MA","02110");
+        publisherRepository.save(hm);
+
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
-        noEJB.setPublisher(hm);
-        hm.getBooks().add(noEJB);
+        noEJB.setPublisher(rh);
+//        publisherRepository.save(rh);
+        rh.getBooks().add(noEJB);
 
-        authorRepository.save(rod);
-        bookRepository.save(noEJB);
-        publisherRepository.save(hm);
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Books: " + bookRepository.count());
+        System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
         System.out.println(rh.toString());
         System.out.println(hm.toString());
